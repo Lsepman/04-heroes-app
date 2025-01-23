@@ -5,6 +5,11 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:href": "ng build --base-href ./",
+    "delete:docs": "del docs",
+    "copy:dist": "copyfiles dist/03-Gifs-app/browser/* ./docs -f",
+    "build:git": "npm run build:href && npm run delete:docs && npm run copy:dist",
+    "subida:git": "npm run build:git && git add . && git commit -m \"Subiendo cambios recientes\" && git push",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
