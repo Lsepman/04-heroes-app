@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "comentario": "se debe instalar del-cli con: npm install --global del-cli   y  copyfiles con npm install copyfiles -g",
     "build:href": "ng build --base-href ./",
     "delete:docs": "del docs",
     "copy:dist": "copyfiles dist/03-Gifs-app/browser/* ./docs -f",
