@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule //Importamos el shared module
   ],
   providers: [],
   bootstrap: [AppComponent]

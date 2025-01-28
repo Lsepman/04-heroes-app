@@ -9,7 +9,7 @@ import { Error404PageComponent } from './pages/error404-page/error404-page.compo
     Error404PageComponent
   ],
   exports:[
-    Error404PageComponent
+    Error404PageComponent //Exportamos para poder utilizarlo como una ruta por defecto del app-routing
   ]
 })
 export class SharedModule { }
