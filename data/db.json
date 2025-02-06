@@ -6,7 +6,7 @@
       "email": "john.due@gmail.com"
     }
   ],
-  "heroes": [
+  "hero": [
     {
       "id": "dc-batman",
       "superhero": "Batman",
