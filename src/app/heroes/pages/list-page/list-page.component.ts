@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Hero } from '../../interfaces/hero.interface';
-import { HttpClient } from '@angular/common/http';
+import { HeroesService } from '../../service/heroes.service';
+
 
 @Component({
   selector: 'app-list-page',
@@ -12,13 +13,12 @@ import { HttpClient } from '@angular/common/http';
 export class ListPageComponent implements OnInit{
 
 
-  private hero: Hero[] =[];
+ datos:Hero[] =[];
 
-  constructor(private http: HttpClient){}
+  constructor(private heroServicio: HeroesService){}
 
   ngOnInit(): void {
-
-
+    this.heroServicio.getHeroes().subscribe(response => this.datos = response)
   }
 
 

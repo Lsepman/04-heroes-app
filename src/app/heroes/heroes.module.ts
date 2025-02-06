@@ -23,6 +23,7 @@ import { MaterialModule } from '../material/material.module';
     CommonModule,
     HeroesRoutingModule,
     MaterialModule,
+
   ]
 })
 export class HeroesModule { }
