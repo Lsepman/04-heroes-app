@@ -13,12 +13,12 @@ import { HeroesService } from '../../service/heroes.service';
 export class ListPageComponent implements OnInit{
 
 
- datos:Hero[] =[];
+ heroes:Hero[] =[];
 
   constructor(private heroServicio: HeroesService){}
 
   ngOnInit(): void {
-    this.heroServicio.getHeroes().subscribe(response => this.datos = response);
+    this.heroServicio.getHeroes().subscribe(response => this.heroes = response);
   }
 
 
