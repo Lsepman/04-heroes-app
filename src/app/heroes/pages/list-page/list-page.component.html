@@ -1,4 +1,8 @@
 <ul>
-  <li *ngFor = "let hero of datos">{{hero.id}}</li>
+  <li *ngFor = "let hero of datos">
+    <strong>{{hero.superhero}}</strong>{{hero.id}}<br>
+    publisher: {{hero.publisher}}<br>
+    Alter Ego: {{hero.alter_ego}}<br>
+  </li>
 </ul>
 
