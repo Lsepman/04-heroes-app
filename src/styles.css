@@ -11,4 +11,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   background-color: #bf21df !important;
   color: white !important;
 }
+.d-flex {
+  display: flex;
+  align-items: center;
+}
 
