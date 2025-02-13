@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "usuario": "John Doe",
       "email": "john.due@gmail.com"
     }
@@ -166,6 +166,30 @@
       "alter_ego": "Norrin Radd",
       "first_appearance": "The Fantastic Four #48",
       "characters": "Norrin Radd"
+    },
+    {
+      "id": "marvel-blackwidow",
+      "superhero": "Black Widow",
+      "publisher": "Marvel Comics",
+      "alter_ego": "Natasha Romanov",
+      "first_appearance": "Whhhat Comics #69",
+      "characters": "Natasha Romanov"
+    },
+    {
+      "id": "marvel-blackwidow",
+      "superhero": "Black Widow",
+      "publisher": "Marvel Comics",
+      "alter_ego": "Natasha Romanov",
+      "first_appearance": "Whhhat Comics #69",
+      "characters": "Natasha Romanov"
+    },
+    {
+      "id": "marvel-blackwidow",
+      "superhero": "Black Widow",
+      "publisher": "Marvel Comics",
+      "alter_ego": "Natasha Romanov",
+      "first_appearance": "Whhhat Comics #69",
+      "characters": "Natasha Romanov"
     }
   ]
 }
