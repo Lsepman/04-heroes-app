@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "backend": "json-server data/db.json",
+    "actualizacion": "npm i --save-dev json-server@0.17.1",
     "start": "ng serve",
     "build": "ng build",
     "comentario": "se debe instalar del-cli con: npm install --global del-cli   y  copyfiles con npm install copyfiles -g",

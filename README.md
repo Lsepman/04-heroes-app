@@ -31,3 +31,6 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 2. Ejecutar ```npm install```
 3. Levantar backend ```npm run backend```
 4. Ejecutar la pp ```npm start``` o bien ```ng serve -o```
+5. Lanzar servidor json ```npm run backend```
+6. Actualizar la version anterior de json-server ```npm i --save-dev json-server@0.17.1```
+7. Comando para realizar subida a git ```npm run build:git ```

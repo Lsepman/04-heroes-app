@@ -4,6 +4,7 @@ import { Hero } from '../../interfaces/hero.interface';
 import { HeroesService } from '../../service/heroes.service';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 
+
 @Component({
   selector: 'app-search-page',
   templateUrl: './search-page.component.html',
