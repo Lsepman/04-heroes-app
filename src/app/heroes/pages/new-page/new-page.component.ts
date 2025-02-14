@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Publisher } from '../../interfaces/hero.interface';
+import { Hero, Publisher } from '../../interfaces/hero.interface';
+import { HeroesService } from '../../service/heroes.service';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 
 @Component({
   selector: 'app-new-page',
@@ -18,20 +20,25 @@ export class NewPageComponent {
     first_appearance: new FormControl(''),
     characters: new FormControl(''),
     alt_img: new FormControl(''),
-
-
   });
+
+  public heroes: Hero[] = [];
 
   public publishers =[
     {id: 'DC Comics', desc: 'DC - Comics'},
     {id: 'Marvel Comics', desc: 'Marvel - Comics'}
   ]
 
-  onSubmit(): void{
-    console.log({
-      formIsValid: this.heroForm.valid,
-      value: this.heroForm.value
-    });
+  constructor(private heroeService: HeroesService){}
+
+  onSubmit(){
+    if(this.heroForm.value){
+      const {id, ...hero}= this.heroForm.getRawValue();
+      this.heroeService.addHero(hero as Hero);
+    }
+
+
+
   }
 
 
