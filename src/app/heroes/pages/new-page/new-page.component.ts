@@ -33,7 +33,7 @@ export class NewPageComponent {
 
   onSubmit(){
     if(this.heroForm.valid){
-     const hero = this.heroForm.getRawValue();
+     const hero = this.heroForm.getRawValue(); //Devuelve un objeto con los valores del formulario actuales incluidos los deshabilitados
      this.heroeService.addHero(hero as Hero)
      this.heroForm.reset()
      console.log(hero)
