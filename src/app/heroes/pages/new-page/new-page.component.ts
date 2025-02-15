@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Hero, Publisher } from '../../interfaces/hero.interface';
 import { HeroesService } from '../../service/heroes.service';
-import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+
 
 @Component({
   selector: 'app-new-page',
@@ -14,11 +14,11 @@ export class NewPageComponent {
 
   public heroForm = new FormGroup({
     id: new FormControl(''),
-    superhero: new FormControl('',{nonNullable: true}),
-    publisher: new FormControl<Publisher>(Publisher.DCComics),
-    alter_ego: new FormControl(''),
-    first_appearance: new FormControl(''),
-    characters: new FormControl(''),
+    superhero: new FormControl('',{nonNullable: true, validators: [Validators.required]}),
+    publisher: new FormControl<Publisher>(Publisher.DCComics,[Validators.required]),
+    alter_ego: new FormControl('',[Validators.required]),
+    first_appearance: new FormControl('',[Validators.required]),
+    characters: new FormControl('',[Validators.required]),
     alt_img: new FormControl(''),
   });
 
@@ -32,14 +32,15 @@ export class NewPageComponent {
   constructor(private heroeService: HeroesService){}
 
   onSubmit(){
-    if(this.heroForm.value){
-      const {id, ...hero}= this.heroForm.getRawValue();
-      this.heroeService.addHero(hero as Hero);
+    if(this.heroForm.valid){
+     const hero = this.heroForm.getRawValue();
+     this.heroeService.addHero(hero as Hero)
+     this.heroForm.reset()
+     console.log(hero)
     }
-
-
-
   }
+
+
 
 
 }

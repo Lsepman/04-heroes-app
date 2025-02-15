@@ -53,9 +53,9 @@
             formControlName="alt_img"/>
             </mat-form-field>
 
-        <div class="flex justify-content-between">
+        <div class="flex justify-content-between col-12">
           <button mat-flat-button color="warn">Borrar</button>
-          <button mat-flat-button color="primary" type="submit">Añadir</button>
+          <button mat-flat-button color="primary" type="submit" [disabled]="!heroForm">Añadir</button>
         </div>
       </form>
       </mat-card-content>
