@@ -22,20 +22,19 @@ export class HeroPageComponent implements OnInit {
 
   }
   //Desetructuramos params para obtener el id y se lo pasamos al servicio
+
   ngOnInit(): void {
-    this.activatedRoute.params
+    this.activatedRoute.params //acceso a los parametros de la URL
     .pipe(
-      switchMap( ({ id }) => this.heroesService.getHeroById( id ))
+      delay(5000),
+      switchMap( ({ id }) => this.heroesService.getHeroById( id )) //Obtiene el heroe segun el ID proporcionado de la URL
       ).subscribe( hero => {
-      if( !hero ) return this.router.navigate(['/heroes/list']);
-
-      this.hero = hero;
-      console.log(hero);
-
+      if( !hero ) return this.router.navigate(['/heroes/list']); //Si no encuentra heroe redirige a la lista de heroes
+      this.hero= hero;
       return;
     })
   }
-
+  //Metodo para regresar a la lista de heroes cuando el usuario lo desee
   back(): void{
     this.router.navigate(['/heroes/list']);
   }
