@@ -56,7 +56,7 @@ export class NewPageComponent implements OnInit{
     if(heroeId){ //SI hay ID en la URL, se esta editando un heroe
       this.heroeService.getHeroById(heroeId).subscribe(hero =>{ //LLamada al servicio para obtener el heroe
         if(hero){ //Si hay heroe rellena el formulario con los datos del Heroe
-        this.heroForm.patchValue(hero);
+        this.heroForm.reset(hero);
       }else {
         this.showSnackBar('Heroe no encontrado'); //Mensaje si no se encuentra Heroe
         this.router.navigate(['/heroes']) //Redireccion a la lista de heroes
