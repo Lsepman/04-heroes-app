@@ -6,6 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../../components/confirm-dialog/confirm-dialog.component';
+import { switchMap } from 'rxjs';
 
 
 @Component({
@@ -52,22 +53,24 @@ export class NewPageComponent implements OnInit{
 
   //Se ejecuta cuando el componente se inicializa
   ngOnInit() : void{
-    const heroeId = this.activatedRoute.snapshot.paramMap.get('id'); //Obtiene el id desde la URL
-    if(heroeId){ //SI hay ID en la URL, se esta editando un heroe
-      this.heroeService.getHeroById(heroeId).subscribe(hero =>{ //LLamada al servicio para obtener el heroe
-        if(hero){ //Si hay heroe rellena el formulario con los datos del Heroe
-        this.heroForm.reset(hero);
-      }else {
-        this.showSnackBar('Heroe no encontrado'); //Mensaje si no se encuentra Heroe
-        this.router.navigate(['/heroes']) //Redireccion a la lista de heroes
-      }
-      });
+    if(!this.router.url.includes('edit')){
+      return;
     }
+     this.activatedRoute.params.pipe(
+      switchMap(({id}) => this.heroeService.getHeroById(id)))
+      .subscribe(hero =>{
+        if(!hero) return this.router.navigate(['/heroes/list']);
+        this.heroForm.reset(hero)
+        return;
+      })
+
   }
 
   //Se ejecuta al enviar el formulario
   onSubmit() : void{
-    if(this.heroForm.invalid) return; //Si es invalido no hace nada
+    if(this.heroForm.invalid){//Si es invalido no hace nada
+      return
+    }
 
     if(this.currentHero.id){ //Si tiene id se actualiza en la base de datos
       this.heroeService.updateHero(this.currentHero)
@@ -77,10 +80,12 @@ export class NewPageComponent implements OnInit{
       return;
     }
     //SI no tiene ID se crea uno nuevo
+    console.log(this.currentHero)
     this.heroeService.addHero(this.currentHero)
     .subscribe(hero=>{
-      this.showSnackBar(`${hero.superhero} created!`) //esto crea las pequeñas respuestas cuando se crea un heroe abajo nos aparece el recuadro con heroe creado
-    })
+      this.showSnackBar(`${hero.superhero} created!`);//esto crea las pequeñas respuestas cuando se crea un heroe abajo nos aparece el recuadro con heroe creado
+      this.router.navigate(['/heroes/list'])
+    });
     }
 
     //Metodo para eliminar un heroe

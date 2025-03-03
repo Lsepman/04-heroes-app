@@ -11,7 +11,7 @@
     <mat-card>
       <mat-card-content>
         <!-- Formulario reactivo vinculado al formulario con evento de envio -->
-        <form class="grid" [formGroup]="heroForm" (ngSubmit)="onSubmit()">
+        <form class="grid" id="heroForm" [formGroup]="heroForm" (ngSubmit)="onSubmit()">
 
           <mat-form-field class="col-12 sm:col-6">
           <mat-label>Super Héroe</mat-label>
@@ -64,14 +64,13 @@
             formControlName="alt_img"/>
             </mat-form-field>
 
-        <div class="flex justify-content-between gap-4">
-          <!-- Boton de eliminar visible solo si el heroe tiene ID -->
+
+      </form>
+      <div class="flex justify-content-between gap-4">
           <button mat-flat-button *ngIf="currentHero.id" (click)="onDeleteHero()" color="warn">Borrar</button>
           <span></span>
-          <!-- Boton para enviar Editar si el heroe tiene Id y si no añadir -->
-          <button mat-flat-button color="primary" type="submit">{{currentHero.id ? 'Editar' : 'Añadir'}}</button>
+          <button *ngIf="heroForm.valid" mat-flat-button color="primary" type="submit" form="heroForm">Guardar</button>
         </div>
-      </form>
       </mat-card-content>
     </mat-card>
   </div>
@@ -83,5 +82,5 @@
   </div>
 </div>
 <pre>
-{{currentHero | json}}
+{{ currentHero | json }}
 </pre>
