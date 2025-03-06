@@ -2,17 +2,25 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthModule } from './auth/auth.module';
 import { Error404PageComponent } from './shared/pages/error404-page/error404-page.component';
+import { canActivateGuard, canMatchGuard } from './auth/guards/auth.guard';
+import { canActivateGuardpublic, canMatchGuardpublic } from './auth/guards/public.guard';
+
+
 
 //Aqui vamos a definir las rutas que vamos a utilizar en el modulo.Cada ruta tiene un path, un component. Dependiendo del modulo routing si es el principal de la aplicacion o de otro modulo lo utilizaremos como forRoot o como forChild
 const routes: Routes = [
   {
     //Cargamos los modulos mediante carga perezosa.
     path: 'auth',
-    loadChildren:() => import('./auth/auth.module').then(m=>m.AuthModule)
+    loadChildren:() => import('./auth/auth.module').then(m=>m.AuthModule),
+    canMatch:[canMatchGuardpublic],
+    canActivate:[canActivateGuardpublic]
   },
   {
     path:'heroes',
-    loadChildren:() => import('./heroes/heroes.module').then(m=>m.HeroesModule)
+    loadChildren:() => import('./heroes/heroes.module').then(m=>m.HeroesModule),
+    canMatch: [canMatchGuard], //Ancla la funcion del canMatch
+    canActivate: [canActivateGuard],
   },
   {
     //Ruta pagina de error
